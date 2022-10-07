@@ -5,6 +5,7 @@ namespace App\Http\Controllers\app\api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -29,5 +30,23 @@ class AuthController extends Controller
 
 
     return response()->json(['success' => "success", "user" => $user, "token" => $token]);
+  }
+
+  public function login(Request $request)
+  {
+    $user = User::where('email', $request->email)->first();
+
+    if ($user == null) {
+      return \response()->json(['success' => 'error', 'errors' => ['يرجى التحقق من معلومات الدخول']], 422);
+    }
+    $same = Hash::check($request->pass, $user->password);
+
+
+    if (!$same) {
+      return \response()->json(['success' => 'error', 'errors' => ['يرجى التحقق من معلومات الدخول']], 422);
+    }
+
+    $token = $user->createToken($user->email)->plainTextToken;
+    return \response()->json(['success' => 'success', 'user' => $user, 'token' => $token]);
   }
 }
