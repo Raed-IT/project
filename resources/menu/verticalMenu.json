@@ -1,0 +1,52 @@
+{
+  "menu": [
+    {
+      "url": "/admin",
+      "name": "dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard"
+    },
+    {
+      "menuHeader": "Category"
+    },
+    {
+      "url": "/admin/category",
+      "name": "category",
+      "icon": "menu-icon tf-icons bx bx-box",
+      "slug": "category",
+      "submenu": [
+        {
+          "url": "/admin/category",
+          "name": "category",
+          "slug": "category-index"
+        },
+        {
+          "url": "/admin/category/create",
+          "name": "Add Category",
+          "slug": "category-create"
+        }
+      ]
+    },
+    {
+      "menuHeader": "product"
+    },
+    {
+      "url": "/admin/products",
+      "name": "products",
+      "icon": "menu-icon tf-icons bx bx-box",
+      "slug": "products",
+      "submenu": [
+        {
+          "url": "/admin/products",
+          "name": "Products",
+          "slug": "product-index"
+        },
+        {
+          "url": "/admin/products/create",
+          "name": "Add Product",
+          "slug": "category-create"
+        }
+      ]
+    }
+  ]
+}
